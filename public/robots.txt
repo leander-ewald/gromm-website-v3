@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gromm-website-v3.vercel.app/sitemap.xml
