@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 function formatPrice(value: number): string {
-  return value.toFixed(2).replace(".", ",") + " €";
+  const [whole, decimal] = value.toFixed(2).split(".");
+  const formatted = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `${formatted},${decimal} €`;
 }
 
 function HeroBanner() {
