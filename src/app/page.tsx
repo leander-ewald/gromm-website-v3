@@ -129,6 +129,13 @@ function HeroSection() {
                 </div>
               </div>
 
+              {/* "Platzhalter" overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span className="text-white/20 font-heading font-bold text-2xl uppercase tracking-[0.3em]">
+                  Platzhalter
+                </span>
+              </div>
+
               {/* Labels */}
               <div className="absolute top-8 right-0 text-right">
                 <span className="text-steel-300 text-xs font-heading uppercase tracking-widest">Feuerverzinkter</span><br />
@@ -252,7 +259,7 @@ function ComparisonSection() {
     },
     {
       aspect: "Lebensdauer",
-      traditional: "1-3 Jahre",
+      traditional: "1–3 Jahre",
       gromm: "Über 20 Jahre",
     },
     {

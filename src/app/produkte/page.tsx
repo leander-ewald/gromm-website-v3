@@ -271,7 +271,7 @@ function MetallStattPlastik() {
       gromm: "100% recyclebar",
     },
     {
-      aspect: "Montagezeit",
+      aspect: "Montage",
       traditional: "Minuten, mit Werkzeug",
       gromm: "Sekunden, ohne Werkzeug",
     },

@@ -255,7 +255,7 @@ export default function AGBPage() {
             {/* Stand */}
             <div className="bg-earth-50 rounded-xl p-6 border border-earth-200">
               <p className="text-slate-600 text-lg font-medium">
-                Stand: März 2021
+                Stand: März 2026
               </p>
             </div>
 

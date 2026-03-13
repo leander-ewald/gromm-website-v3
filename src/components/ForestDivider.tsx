@@ -37,9 +37,9 @@ export function ForestDivider({
     const ctx = gsap.context(() => {
       layers.forEach((layer, i) => {
         // Back layer (i=0): slow, wide sway. Front (i=2): faster, tighter.
-        const xAmplitude = [6, 4, 2.5][i];
-        const yAmplitude = [3, 2, 1.2][i];
-        const duration = [4.5, 3.5, 2.8][i];
+        const xAmplitude = [14, 9, 5][i];
+        const yAmplitude = [7, 4.5, 2.5][i];
+        const duration = [5, 3.8, 3][i];
 
         // Horizontal wind sway
         gsap.to(layer, {
@@ -60,9 +60,9 @@ export function ForestDivider({
           delay: [0, 0.6, 1.2][i],
         });
 
-        // Very subtle scale pulse for organic breathing feel
+        // Scale pulse for organic breathing feel
         gsap.to(layer, {
-          scaleX: 1 + [0.008, 0.005, 0.003][i],
+          scaleX: 1 + [0.018, 0.012, 0.006][i],
           duration: duration * 1.7,
           ease: "sine.inOut",
           repeat: -1,
@@ -93,10 +93,10 @@ export function ForestDivider({
           /* Slightly oversized so wind sway + scale never exposes container edges */
           style={{
             zIndex: i,
-            top: "-10%",
-            left: "-2%",
-            width: "104%",
-            height: "120%",
+            top: "-12%",
+            left: "-3%",
+            width: "106%",
+            height: "124%",
           }}
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
