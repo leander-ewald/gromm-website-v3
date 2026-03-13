@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -9,24 +9,24 @@ import { navigation } from "@/lib/config";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lastScroll, setLastScroll] = useState(0);
   const [hidden, setHidden] = useState(false);
+  const lastScrollRef = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
       setScrolled(current > 20);
-      if (current > lastScroll && current > 100) {
+      if (current > lastScrollRef.current && current > 100) {
         setHidden(true);
       } else {
         setHidden(false);
       }
-      setLastScroll(current);
+      lastScrollRef.current = current;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [lastScroll]);
+  }, []);
 
   useEffect(() => {
     setIsOpen(false);
@@ -39,6 +39,8 @@ export function Navigation() {
     };
   }, [isOpen]);
 
+  const isHome = pathname === "/";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -49,7 +51,7 @@ export function Navigation() {
       <nav
         className={`transition-all duration-300 ${
           scrolled || isOpen
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-forest-100"
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
             : "bg-transparent"
         }`}
       >
@@ -61,7 +63,9 @@ export function Navigation() {
                 alt="GroMM GmbH Logo"
                 width={160}
                 height={50}
-                className="h-10 w-auto sm:h-12"
+                className={`h-10 w-auto sm:h-12 transition-all duration-300 ${
+                  !scrolled && !isOpen ? "brightness-0 invert" : ""
+                }`}
                 priority
               />
             </Link>
@@ -74,16 +78,25 @@ export function Navigation() {
                   href={item.href}
                   className={`px-4 py-2 text-sm font-medium rounded-md transition-colors min-h-[44px] flex items-center ${
                     pathname === item.href
-                      ? "text-forest-700 bg-forest-50"
+                      ? scrolled
+                        ? "text-forest-700 bg-forest-50"
+                        : "text-white bg-white/15"
                       : scrolled
                         ? "text-slate-700 hover:text-forest-700 hover:bg-forest-50"
-                        : "text-slate-700 hover:text-forest-700 hover:bg-forest-50/80"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link href="/kontakt" className="btn-primary ml-3 text-sm !py-2 !px-5">
+              <Link
+                href="/kontakt"
+                className={`ml-3 text-sm font-heading font-semibold uppercase tracking-wider px-5 py-2 rounded min-h-[44px] flex items-center transition-all duration-300 ${
+                  scrolled
+                    ? "bg-accent-500 text-white hover:bg-accent-700"
+                    : "bg-white text-forest-950 hover:bg-white/90"
+                }`}
+              >
                 Anfrage stellen
               </Link>
             </div>
@@ -97,19 +110,19 @@ export function Navigation() {
             >
               <div className="relative w-6 h-5">
                 <span
-                  className={`absolute left-0 w-6 h-0.5 bg-slate-800 transition-all duration-300 ${
-                    isOpen ? "top-2.5 rotate-45" : "top-0"
-                  }`}
+                  className={`absolute left-0 w-6 h-0.5 transition-all duration-300 ${
+                    scrolled || isOpen ? "bg-slate-800" : "bg-white"
+                  } ${isOpen ? "top-2.5 rotate-45" : "top-0"}`}
                 />
                 <span
-                  className={`absolute left-0 top-2 w-6 h-0.5 bg-slate-800 transition-opacity duration-300 ${
-                    isOpen ? "opacity-0" : ""
-                  }`}
+                  className={`absolute left-0 top-2 w-6 h-0.5 transition-opacity duration-300 ${
+                    scrolled || isOpen ? "bg-slate-800" : "bg-white"
+                  } ${isOpen ? "opacity-0" : ""}`}
                 />
                 <span
-                  className={`absolute left-0 w-6 h-0.5 bg-slate-800 transition-all duration-300 ${
-                    isOpen ? "top-2.5 -rotate-45" : "top-4"
-                  }`}
+                  className={`absolute left-0 w-6 h-0.5 transition-all duration-300 ${
+                    scrolled || isOpen ? "bg-slate-800" : "bg-white"
+                  } ${isOpen ? "top-2.5 -rotate-45" : "top-4"}`}
                 />
               </div>
             </button>
@@ -122,7 +135,7 @@ export function Navigation() {
             isOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="bg-white border-t border-forest-100 px-4 py-4 space-y-1">
+          <div className="bg-white border-t border-slate-100 px-4 py-4 space-y-1">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -137,10 +150,7 @@ export function Navigation() {
               </Link>
             ))}
             <div className="pt-3">
-              <Link
-                href="/kontakt"
-                className="btn-primary w-full text-center"
-              >
+              <Link href="/kontakt" className="btn-primary w-full text-center">
                 Anfrage stellen
               </Link>
             </div>

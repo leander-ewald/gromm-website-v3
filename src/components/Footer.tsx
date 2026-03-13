@@ -8,6 +8,23 @@ export function Footer() {
       className="bg-forest-950 text-white"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
+      {/* Trust strip */}
+      <div className="border-b border-forest-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm text-forest-300 font-heading uppercase tracking-wider">
+            <span>Patentiert</span>
+            <span className="text-forest-700">|</span>
+            <span>Made in Germany</span>
+            <span className="text-forest-700">|</span>
+            <span>Metall statt Plastik</span>
+            <span className="text-forest-700">|</span>
+            <span>20+ Jahre Lebensdauer</span>
+            <span className="text-forest-700">|</span>
+            <span>100% Recyclebar</span>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -20,16 +37,17 @@ export function Footer() {
               height={50}
               className="h-12 w-auto brightness-0 invert mb-4"
             />
-            <p className="text-forest-300 text-sm leading-relaxed">
+            <p className="text-forest-400 text-sm font-heading uppercase tracking-wider mb-3">
               {company.slogan}
-              <br />
-              {company.description}
+            </p>
+            <p className="text-forest-300 text-sm leading-relaxed">
+              {company.claim}. Aus feuerverzinktem Stahl — wiederverwendbar, werkzeuglos, nachhaltig.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-forest-400 mb-4">
+            <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-forest-400 mb-4">
               Navigation
             </h3>
             <ul className="space-y-3">
@@ -48,7 +66,7 @@ export function Footer() {
 
           {/* Kontakt */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-forest-400 mb-4">
+            <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-forest-400 mb-4">
               Kontakt
             </h3>
             <address className="text-forest-200 text-sm not-italic space-y-3">
@@ -72,7 +90,7 @@ export function Footer() {
 
           {/* Rechtliches */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-forest-400 mb-4">
+            <h3 className="text-sm font-heading font-semibold uppercase tracking-wider text-forest-400 mb-4">
               Rechtliches
             </h3>
             <ul className="space-y-3">
@@ -92,11 +110,11 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-forest-800 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-forest-400 text-xs">
+          <p className="text-forest-500 text-xs">
             &copy; {new Date().getFullYear()} {company.name}. Alle Rechte
             vorbehalten.
           </p>
-          <p className="text-forest-500 text-xs">
+          <p className="text-forest-600 text-xs">
             Geschäftsführer: {company.ceo}
           </p>
         </div>

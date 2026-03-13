@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -9,6 +9,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const barlow = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-barlow",
 });
 
 export const viewport: Viewport = {
@@ -34,6 +41,8 @@ export const metadata: Metadata = {
     "Einzelschützer",
     "Pflanzenschutz",
     "Nachhaltigkeit",
+    "Metall statt Plastik",
+    "feuerverzinkter Stahl",
   ],
   authors: [{ name: company.name }],
   openGraph: {
@@ -55,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={inter.variable}>
+    <html lang="de" className={`${inter.variable} ${barlow.variable}`}>
       <body className="antialiased">
         <Navigation />
         <main>{children}</main>

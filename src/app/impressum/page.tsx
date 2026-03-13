@@ -12,24 +12,23 @@ export default function ImpressumPage() {
     <>
       {/* Hero */}
       <section className="relative bg-forest-950 pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(176,190,197,0.5) 60px, rgba(176,190,197,0.5) 61px)",
+          }}
+        />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-forest-800/40 to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-forest-400 font-semibold text-sm uppercase tracking-wider mb-4">
+          <div className="accent-line mb-6" />
+          <p className="section-label text-steel-400 mb-3">
             Rechtliches
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
             Impressum
           </h1>
-          <p className="text-forest-200 text-lg sm:text-xl max-w-2xl leading-relaxed">
+          <p className="text-steel-200 text-lg sm:text-xl max-w-2xl leading-relaxed">
             Angaben gemäß § 5 TMG
           </p>
         </div>

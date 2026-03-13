@@ -128,6 +128,52 @@ export function TreeIcon({ className = "w-6 h-6" }: IconProps) {
   );
 }
 
+export function XIcon({ className = "w-5 h-5" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 6L6 18" />
+      <path d="M6 6l12 12" />
+    </svg>
+  );
+}
+
+export function LeafIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 20A7 7 0 019.8 6.9C15.5 4.9 17 3.5 17 3.5s2 2 2 7.5c0 5-4 9-8 9z" />
+      <path d="M11 20V10" />
+      <path d="M7 14c2-1 4-1 6 0" />
+    </svg>
+  );
+}
+
+export function FactoryIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 20h20" />
+      <path d="M5 20V9l5 4V9l5 4V4h3v16" />
+    </svg>
+  );
+}
+
+export function StarIcon({ className = "w-5 h-5" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+export function GermanyIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="4" width="20" height="5.33" rx="1" fill="#1a1a1a" />
+      <rect x="2" y="9.33" width="20" height="5.33" fill="#c62828" />
+      <rect x="2" y="14.67" width="20" height="5.33" rx="1" fill="#f9a825" />
+    </svg>
+  );
+}
+
 const iconMap = {
   timer: TimerIcon,
   recycle: RecycleIcon,
@@ -137,6 +183,8 @@ const iconMap = {
   shield: ShieldIcon,
   clock: ClockIcon,
   wind: WindIcon,
+  leaf: LeafIcon,
+  factory: FactoryIcon,
 } as const;
 
 export function BenefitIcon({ icon, className }: { icon: keyof typeof iconMap; className?: string }) {
