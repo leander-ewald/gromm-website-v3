@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company, benefits, products } from "@/lib/config";
-import { BenefitIcon, ArrowRightIcon, CheckIcon, XIcon, GermanyIcon } from "@/components/Icons";
+import { BenefitIcon, ArrowRightIcon, CheckIcon, XIcon, GermanyIcon, AwardIcon, ShieldIcon, RecycleIcon, LeafIcon } from "@/components/Icons";
 import { ScrollReveal, StaggerReveal, CountUp } from "@/components/ScrollReveal";
 
 /* ─── HERO ─── */
@@ -143,11 +143,11 @@ function HeroSection() {
 /* ─── TRUST BAR ─── */
 function TrustBar() {
   const items = [
-    { icon: "🔩", label: "Patentiert" },
-    { icon: "🇩🇪", label: "Made in Germany" },
-    { icon: "🔗", label: "Metall statt Plastik" },
-    { icon: "♻️", label: "100% Recyclebar" },
-    { icon: "🌲", label: "PEFC-zertifiziert" },
+    { Icon: AwardIcon, label: "Patentiert" },
+    { Icon: GermanyIcon, label: "Made in Germany" },
+    { Icon: ShieldIcon, label: "Metall statt Plastik" },
+    { Icon: RecycleIcon, label: "100% Recyclebar" },
+    { Icon: LeafIcon, label: "PEFC-zertifiziert" },
   ];
 
   return (
@@ -159,7 +159,7 @@ function TrustBar() {
               key={item.label}
               className="flex items-center gap-2.5 text-steel-700"
             >
-              <span className="text-lg">{item.icon}</span>
+              <item.Icon className="w-5 h-5" />
               <span className="text-sm font-heading font-semibold uppercase tracking-wider">
                 {item.label}
               </span>

@@ -4,10 +4,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
@@ -33,26 +29,33 @@ export function ScrollReveal({
   useEffect(() => {
     if (!ref.current) return;
 
-    const from: gsap.TweenVars = { opacity: 0, duration, delay, ease: "power3.out" };
+    gsap.registerPlugin(ScrollTrigger);
+
+    const fromVars: gsap.TweenVars = { opacity: 0 };
+    const toVars: gsap.TweenVars = { opacity: 1, duration, delay, ease: "power3.out" };
 
     switch (direction) {
       case "up":
-        from.y = distance;
+        fromVars.y = distance;
+        toVars.y = 0;
         break;
       case "left":
-        from.x = -distance;
+        fromVars.x = -distance;
+        toVars.x = 0;
         break;
       case "right":
-        from.x = distance;
+        fromVars.x = distance;
+        toVars.x = 0;
         break;
       case "scale":
-        from.scale = 0.92;
+        fromVars.scale = 0.92;
+        toVars.scale = 1;
         break;
     }
 
     const ctx = gsap.context(() => {
-      gsap.from(ref.current, {
-        ...from,
+      gsap.fromTo(ref.current, fromVars, {
+        ...toVars,
         scrollTrigger: {
           trigger: ref.current,
           start: "top 88%",
@@ -90,23 +93,28 @@ export function StaggerReveal({
   useEffect(() => {
     if (!ref.current) return;
 
+    gsap.registerPlugin(ScrollTrigger);
+
     const items = ref.current.children;
     if (items.length === 0) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(items, {
-        opacity: 0,
-        y: 30,
-        duration,
-        delay,
-        stagger,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-      });
+      gsap.fromTo(items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration,
+          delay,
+          stagger,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
 
     return () => ctx.revert();
@@ -137,6 +145,8 @@ export function CountUp({
 
   useEffect(() => {
     if (!ref.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
 
     const obj = { value: 0 };
 

@@ -63,9 +63,7 @@ export function Navigation() {
                 alt="GroMM GmbH Logo"
                 width={160}
                 height={50}
-                className={`h-10 w-auto sm:h-12 transition-all duration-300 ${
-                  !scrolled && !isOpen ? "brightness-0 invert" : ""
-                }`}
+                className="h-10 w-auto sm:h-12 rounded-md"
                 priority
               />
             </Link>

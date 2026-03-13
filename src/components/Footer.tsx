@@ -35,7 +35,7 @@ export function Footer() {
               alt="GroMM GmbH Logo"
               width={160}
               height={50}
-              className="h-12 w-auto brightness-0 invert mb-4"
+              className="h-12 w-auto rounded-md mb-4"
             />
             <p className="text-forest-400 text-sm font-heading uppercase tracking-wider mb-3">
               {company.slogan}
