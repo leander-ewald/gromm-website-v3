@@ -80,7 +80,7 @@ export function Footer() {
               <p>
                 <a
                   href={`mailto:${company.email}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors min-h-[44px] inline-flex items-center"
                 >
                   {company.email}
                 </a>

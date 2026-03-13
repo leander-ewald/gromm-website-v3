@@ -84,6 +84,11 @@
     color: #0d2418;
   }
 
+  /* Clip section overflow — prevents ScrollReveal animations from causing horizontal scroll */
+  section {
+    overflow-x: clip;
+  }
+
   /* iOS safe area */
   @supports (padding: env(safe-area-inset-top)) {
     body {
