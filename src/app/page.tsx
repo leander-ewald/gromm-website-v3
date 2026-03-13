@@ -2,6 +2,9 @@ import Link from "next/link";
 import { company, benefits, products } from "@/lib/config";
 import { BenefitIcon, ArrowRightIcon, CheckIcon, XIcon, GermanyIcon, AwardIcon, ShieldIcon, RecycleIcon, LeafIcon } from "@/components/Icons";
 import { ScrollReveal, StaggerReveal, CountUp } from "@/components/ScrollReveal";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
+import { MetallicSheen } from "@/components/MetallicSheen";
+import { ForestDivider } from "@/components/ForestDivider";
 
 /* ─── HERO ─── */
 function HeroSection() {
@@ -20,6 +23,9 @@ function HeroSection() {
         <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-forest-800/40 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-forest-950 to-transparent" />
       </div>
+
+      {/* Floating leaves */}
+      <FloatingLeaves count={5} variant="dark" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pt-36 sm:pb-28 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -282,7 +288,7 @@ function ComparisonSection() {
   ];
 
   return (
-    <section className="section-padding bg-forest-950">
+    <MetallicSheen className="section-padding bg-forest-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -339,7 +345,7 @@ function ComparisonSection() {
           </div>
         </ScrollReveal>
       </div>
-    </section>
+    </MetallicSheen>
   );
 }
 
@@ -389,7 +395,7 @@ function ProductPreview() {
           {items.map(({ product, bgFrom, bgTo, accent, accentBg, priceNote }) => (
             <div
               key={product.model}
-              className="bg-white rounded-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+              className="metallic-sheen bg-white rounded-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow duration-300"
             >
               {/* Product visual */}
               <div className={`w-full aspect-[16/9] bg-gradient-to-br ${bgFrom} ${bgTo} flex items-center justify-center relative`}>
@@ -448,8 +454,9 @@ function ProductPreview() {
 /* ─── BENEFITS ─── */
 function BenefitsSection() {
   return (
-    <section className="section-padding bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative section-padding bg-white">
+      <FloatingLeaves count={4} variant="light" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="max-w-3xl mb-16">
             <div className="accent-line mb-6" />
@@ -601,8 +608,10 @@ export default function HomePage() {
       <ComparisonSection />
       <ProductPreview />
       <BenefitsSection />
+      <ForestDivider variant="subtle" />
       <TestimonialsSection />
       <QuoteSection />
+      <ForestDivider variant="bold" />
       <CTASection />
     </>
   );

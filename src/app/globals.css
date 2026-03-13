@@ -275,6 +275,39 @@
     );
   }
 
+  /* Metallic sheen hover effect for product cards */
+  .metallic-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metallic-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.12) 45%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.12) 55%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .metallic-sheen:hover::after {
+    animation: sheen-sweep 0.7s ease-in-out;
+  }
+
+  @keyframes sheen-sweep {
+    to {
+      transform: translateX(120%);
+    }
+  }
+
   /* Steel pattern overlay */
   .steel-pattern {
     background-image:

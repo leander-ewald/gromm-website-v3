@@ -13,6 +13,8 @@ import {
   BanIcon,
 } from "@/components/Icons";
 import { ScrollReveal, StaggerReveal, CountUp } from "@/components/ScrollReveal";
+import { MetallicSheen } from "@/components/MetallicSheen";
+import { ForestDivider } from "@/components/ForestDivider";
 
 export const metadata: Metadata = {
   title: "Produkte",
@@ -123,7 +125,7 @@ function ProductCards() {
           }) => (
             <div
               key={product.model}
-              className={`bg-white rounded-lg overflow-hidden border ${accentBorder} hover:shadow-xl transition-shadow duration-300`}
+              className={`metallic-sheen bg-white rounded-lg overflow-hidden border ${accentBorder} hover:shadow-xl transition-shadow duration-300`}
             >
               {/* Product visual — height number on colored gradient */}
               <div className={`relative w-full aspect-[16/9] bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center overflow-hidden`}>
@@ -272,7 +274,7 @@ function MetallStattPlastik() {
   ];
 
   return (
-    <section className="section-padding bg-forest-950">
+    <MetallicSheen className="section-padding bg-forest-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -351,7 +353,7 @@ function MetallStattPlastik() {
           </div>
         </ScrollReveal>
       </div>
-    </section>
+    </MetallicSheen>
   );
 }
 
@@ -651,6 +653,7 @@ export default function ProduktePage() {
     <>
       <HeroBanner />
       <ProductCards />
+      <ForestDivider variant="bold" />
       <MetallStattPlastik />
       <TechnicalDetails />
       <ModelComparison />

@@ -12,6 +12,8 @@ import {
   RecycleIcon,
   TimerIcon,
 } from "@/components/Icons";
+import { TreeRings } from "@/components/TreeRings";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
 
 export const metadata: Metadata = {
   title: "Über uns",
@@ -99,6 +101,10 @@ function CompanyStory() {
                     "repeating-linear-gradient(135deg, transparent, transparent 40px, rgba(176,190,197,0.5) 40px, rgba(176,190,197,0.5) 41px)",
                 }}
               />
+              {/* Tree rings growing in the background */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <TreeRings size={320} rings={8} className="text-forest-600" />
+              </div>
               <div className="relative">
                 <p className="section-label text-steel-400 mb-6">
                   Erfahrung im Forst
@@ -302,6 +308,8 @@ function PhilosophySection() {
         }}
       />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-forest-800/30 to-transparent" />
+      {/* Floating leaves in the philosophy section */}
+      <FloatingLeaves count={4} variant="dark" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
