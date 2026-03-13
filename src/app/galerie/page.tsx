@@ -3,6 +3,8 @@ import Link from "next/link";
 import { company } from "@/lib/config";
 import { ArrowRightIcon } from "@/components/Icons";
 import { ScrollReveal, StaggerReveal } from "@/components/ScrollReveal";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
+import { ForestDivider } from "@/components/ForestDivider";
 
 export const metadata: Metadata = {
   title: "Galerie",
@@ -32,6 +34,9 @@ export default function GaleriePage() {
         />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-forest-800/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-forest-950 to-transparent" />
+
+        {/* Floating leaves */}
+        <FloatingLeaves count={3} variant="dark" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -104,6 +109,8 @@ export default function GaleriePage() {
         </div>
       </section>
 
+      <ForestDivider variant="subtle" />
+
       {/* Video Section */}
       <section className="section-padding bg-steel-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -141,6 +148,8 @@ export default function GaleriePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      <ForestDivider variant="bold" />
 
       {/* CTA */}
       <section className="relative section-padding bg-forest-900 overflow-hidden">

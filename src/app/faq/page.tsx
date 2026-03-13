@@ -4,6 +4,8 @@ import { faqItems } from "@/lib/config";
 import { ArrowRightIcon, MailIcon } from "@/components/Icons";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
+import { ForestDivider } from "@/components/ForestDivider";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -24,6 +26,9 @@ export default function FaqPage() {
         />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-forest-800/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-forest-950 to-transparent" />
+
+        {/* Floating leaves */}
+        <FloatingLeaves count={3} variant="dark" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -67,6 +72,8 @@ export default function FaqPage() {
           </ScrollReveal>
         </div>
       </section>
+
+      <ForestDivider variant="bold" />
 
       {/* "Noch Fragen?" Industrial Banner */}
       <section className="relative section-padding bg-forest-950 overflow-hidden">

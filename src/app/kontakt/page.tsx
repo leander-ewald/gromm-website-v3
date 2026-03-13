@@ -3,6 +3,7 @@ import { company } from "@/lib/config";
 import { MailIcon, MapPinIcon } from "@/components/Icons";
 import { ContactForm } from "@/components/ContactForm";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -23,6 +24,9 @@ export default function KontaktPage() {
         />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-forest-800/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-forest-950 to-transparent" />
+
+        {/* Floating leaves */}
+        <FloatingLeaves count={3} variant="dark" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

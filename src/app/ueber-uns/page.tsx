@@ -14,6 +14,7 @@ import {
 } from "@/components/Icons";
 import { TreeRings } from "@/components/TreeRings";
 import { FloatingLeaves } from "@/components/FloatingLeaves";
+import { ForestDivider } from "@/components/ForestDivider";
 
 export const metadata: Metadata = {
   title: "Über uns",
@@ -34,6 +35,9 @@ function HeroBanner() {
       />
       <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-forest-800/40 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-forest-950 to-transparent" />
+
+      {/* Floating leaves */}
+      <FloatingLeaves count={4} variant="dark" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="accent-line mb-8" />
@@ -490,8 +494,10 @@ export default function UeberUnsPage() {
       <HeroBanner />
       <CompanyStory />
       <TimelineSection />
+      <ForestDivider variant="subtle" />
       <TeamSection />
       <PhilosophySection />
+      <ForestDivider variant="bold" />
       <ValuesSection />
       <CTASection />
     </>

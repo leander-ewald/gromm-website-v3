@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* Three hand-crafted tree-canopy silhouette paths (viewBox 0 0 1200 120).
    Each layer has peaks at different heights — back layer tallest, front shortest. */
@@ -28,35 +27,48 @@ export function ForestDivider({
 
   useEffect(() => {
     if (!containerRef.current) return;
-    gsap.registerPlugin(ScrollTrigger);
 
     const layers =
       containerRef.current.querySelectorAll<SVGElement>(".fd-layer");
     if (layers.length === 0) return;
 
-    /* Reduce parallax on mobile for a smoother experience */
-    const isMobile =
-      typeof window !== "undefined" && window.innerWidth < 768;
-
+    /* Continuous wind animation — each layer sways at its own rhythm.
+       Back layers move slower & larger (further away), front faster & smaller. */
     const ctx = gsap.context(() => {
       layers.forEach((layer, i) => {
-        const scrub = [2.5, 1.8, 1][i] ?? 1;
-        const yRange = isMobile ? [4, 3, 1.5][i] : [14, 8, 3][i];
+        // Back layer (i=0): slow, wide sway. Front (i=2): faster, tighter.
+        const xAmplitude = [6, 4, 2.5][i];
+        const yAmplitude = [3, 2, 1.2][i];
+        const duration = [4.5, 3.5, 2.8][i];
 
-        gsap.fromTo(
-          layer,
-          { y: -(yRange ?? 5) },
-          {
-            y: yRange ?? 5,
-            ease: "none",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub,
-            },
-          }
-        );
+        // Horizontal wind sway
+        gsap.to(layer, {
+          x: xAmplitude,
+          duration: duration,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+
+        // Vertical gentle bob (offset start so layers don't sync)
+        gsap.to(layer, {
+          y: yAmplitude,
+          duration: duration * 1.3,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: [0, 0.6, 1.2][i],
+        });
+
+        // Very subtle scale pulse for organic breathing feel
+        gsap.to(layer, {
+          scaleX: 1 + [0.008, 0.005, 0.003][i],
+          duration: duration * 1.7,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: [0.3, 0, 0.8][i],
+        });
       });
     });
 
@@ -71,17 +83,24 @@ export function ForestDivider({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[80px] sm:h-[100px] lg:h-[120px] ${className}`}
+      className={`relative w-full h-[80px] sm:h-[100px] lg:h-[120px] overflow-hidden ${className}`}
       aria-hidden="true"
     >
       {treePaths.map((d, i) => (
         <svg
           key={i}
-          className="fd-layer absolute inset-0 w-full h-full"
+          className="fd-layer absolute w-full h-full"
+          /* Slightly oversized so wind sway + scale never exposes container edges */
+          style={{
+            zIndex: i,
+            top: "-10%",
+            left: "-2%",
+            width: "104%",
+            height: "120%",
+          }}
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
           fill={colors[i]}
-          style={{ zIndex: i }}
         >
           <path d={d} />
         </svg>

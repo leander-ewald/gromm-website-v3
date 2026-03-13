@@ -4,6 +4,8 @@ import { pricing, products, company } from "@/lib/config";
 import { ArrowRightIcon, CheckIcon, MailIcon } from "@/components/Icons";
 import { ScrollReveal, StaggerReveal } from "@/components/ScrollReveal";
 import { PricingConfigurator } from "./PricingConfigurator";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
+import { ForestDivider } from "@/components/ForestDivider";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -30,6 +32,9 @@ function HeroBanner() {
       />
       <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-forest-800/40 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-forest-950 to-transparent" />
+
+      {/* Floating leaves */}
+      <FloatingLeaves count={4} variant="dark" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="accent-line mb-8" />
@@ -355,7 +360,9 @@ export default function ShopPage() {
     <>
       <HeroBanner />
       <VS1200Section />
+      <ForestDivider variant="subtle" />
       <VS1700Section />
+      <ForestDivider variant="bold" />
       <OrderCTA />
       <FAQTeaser />
     </>

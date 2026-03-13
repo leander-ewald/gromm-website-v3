@@ -15,6 +15,7 @@ import {
 import { ScrollReveal, StaggerReveal, CountUp } from "@/components/ScrollReveal";
 import { MetallicSheen } from "@/components/MetallicSheen";
 import { ForestDivider } from "@/components/ForestDivider";
+import { FloatingLeaves } from "@/components/FloatingLeaves";
 
 export const metadata: Metadata = {
   title: "Produkte",
@@ -37,6 +38,9 @@ function HeroBanner() {
         <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-forest-800/40 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-forest-950 to-transparent" />
       </div>
+
+      {/* Floating leaves */}
+      <FloatingLeaves count={4} variant="dark" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="accent-line mb-8" />
@@ -656,6 +660,7 @@ export default function ProduktePage() {
       <ForestDivider variant="bold" />
       <MetallStattPlastik />
       <TechnicalDetails />
+      <ForestDivider variant="subtle" />
       <ModelComparison />
       <CTASection />
     </>
