@@ -57,7 +57,7 @@ export const products = {
     name: "GroMM VS1700S2",
     height: "1.700 mm",
     target: "Rotwild",
-    material: "Feuerverzinkter Stahl",
+    material: "Verzinkter Stahl",
     description:
       "Entwickelt für den zuverlässigen Schutz von Kulturpflanzen gegen Verbiss- und Fegeschäden durch Rotwild. Robuste Konstruktion für größere Bäume.",
     features: [

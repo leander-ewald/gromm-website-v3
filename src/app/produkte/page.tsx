@@ -19,7 +19,7 @@ import { FloatingLeaves } from "@/components/FloatingLeaves";
 
 export const metadata: Metadata = {
   title: "Produkte",
-  description: `${products.vs1200.name} und ${products.vs1700.name} — Patentierte Einzelschützer aus feuerverzinktem Stahl für den Schutz gegen Reh- und Rotwild.`,
+  description: `${products.vs1200.name} und ${products.vs1700.name} — Patentierte Einzelschützer aus Stahl für den Schutz gegen Reh- und Rotwild.`,
 };
 
 /* ─── HERO ─── */
@@ -403,11 +403,12 @@ function TechnicalDetails() {
                 Technik & Konstruktion
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                Feuerverzinkter Stahl —<br />gebaut für Jahrzehnte
+                Verzinkter Stahl —<br />gebaut für Jahrzehnte
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                Beide Modelle bestehen aus hochwertigem, feuerverzinktem Stahl.
-                Die Feuerverzinkung garantiert eine Lebensdauer von über 20
+                Beide Modelle bestehen aus hochwertigem, verzinktem Stahl —
+                der VS1200S2 aus feuerverzinktem, der VS1700S2 aus verzinktem Stahl.
+                Die Verzinkung garantiert eine Lebensdauer von über 20
                 Jahren — selbst unter den rauen Bedingungen im Wald. Der Stahl
                 ist zu 100% recyclebar und enthält keinerlei Kunststoffanteile.
               </p>
